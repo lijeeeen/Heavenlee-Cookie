@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Heavenlee Cookies | A Little Taste of Heaven</title>
+
+  <!-- UI / Layout Design -->
+  <link rel="stylesheet" href="ui.css" />
+
+  <!-- Main Styling -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-card">
+      <img src="images/logo.png" alt="Heavenlee Cookies Logo" />
+      <div class="loader-cookie"></div>
+      <p>Baking something heavenly...</p>
+    </div>
+  </div>
+
+  <div class="page-bg">
+    <div class="floating-cloud cloud-one"></div>
+    <div class="floating-cloud cloud-two"></div>
+    <div class="floating-cookie cookie-one">🍪</div>
+    <div class="floating-cookie cookie-two">🍫</div>
+  </div>
+
+  <div class="announcement">
+    🍪 NEW FLAVORS BAKING SOON! ORDER NOW.
+  </div>
+
+  <header>
+    <nav>
+      <a href="#home" class="logo">
+        <img src="images/logo.png" alt="Heavenlee Cookies Logo" />
+      </a>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" onclick="closeMobileMenu()">Home</a>
+        <a href="#shop" onclick="closeMobileMenu()">Shop</a>
+        <a href="#track" onclick="closeMobileMenu()">Track Order</a>
+        <a href="#admin" onclick="closeMobileMenu()">Owner</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-soft cart-btn" onclick="openCart()">
+          🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a class="btn btn-primary" href="#shop">Order Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="hero reveal" id="home">
+      <div class="hero-copy">
+        <div class="badge">✨ A little taste of heaven from earth!</div>
+
+        <h1>Made with <span>warmth, baked</span> with love.</h1>
+
+        <p>
+          Heavenlee Cookies was created to serve soft-baked comfort and heavenly sweetness
+          through flavors made to feel warm, familiar, and worth coming back to. Whether
+          shared with others or enjoyed as a little reward for yourself, every cookie 
+          is baked to turn simple cravings into sweet moments.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-primary">Shop Cookies</a>
+          <a href="#track" class="btn btn-soft">Track My Order</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <strong>FRESHNESS</strong>
+            <span>Warmly baked daily</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>COMFORT</strong>
+            <span>Soft-baked goodness</span>
+          </div>
+
+          <div class="stat-card">
+            <strong>SATISFACTION</strong>
+            <span>Made for cravings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="cookie-orbit">
+          <div class="big-cookie"></div>
+          <div class="floating-chip chip-1">🍪 Soft-Centered</div>
+          <div class="floating-chip chip-2">🤎 Cozy</div>
+          <div class="floating-chip chip-3">☁️ Comforting</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="shop" class="reveal">
+      <div class="section-heading">
+        <span>Cookie Menu</span>
+        <h2>Choose your cravings</h2>
+        <p>
+          Explore our heavenly collection of soft-baked cookies made to comfort every craving.
+        </p>
+      </div>
+
+      <div class="shop-tools">
+        <input type="search" id="searchInput" placeholder="Search cookie flavor..." oninput="renderProducts()" />
+
+        <select id="sortSelect" onchange="renderProducts()">
+          <option value="default">Sort: Default</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="stock">Most Stocks</option>
+        </select>
+      </div>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="reveal">
+      <div class="section-heading">
+        <span>Why customers love us</span>
+        <h2>Made for sweet moments</h2>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon">🌤️</div>
+          <h3>Fresh Everydays</h3>
+          <p>Cookies are prepared in small batches for better texture, aroma, and flavor.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🍪</div>
+          <h3>Crowd Favorites</h3>
+          <p>Flavors customers keep coming back for, from classics to signature bestsellers.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">📦</div>
+          <h3>Perfect for Sharing</h3>
+          <p>Made for gifting, late-night cravings, study sessions, and sweet little celebrations.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🤍</div>
+          <h3>Made to Feel Special</h3>
+          <p>Every order is prepared carefully to make every box feel personal and worth remembering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACK ORDER -->
+    <section id="track" class="reveal">
+      <div class="tracking-box">
+        <div>
+          <span class="mini-label">Order Tracking</span>
+          <h2>Track your cookie order</h2>
+          <p>
+            After checkout, copy your Order ID and enter it here to view the
+            latest status of your order.
+          </p>
+        </div>
+
+        <div class="track-form">
+          <input type="text" id="trackInput" placeholder="Enter your Order ID, example HC-12345" />
+          <button class="btn-primary full-btn" onclick="trackOrder()">Check Status</button>
+          <div class="status-result" id="statusResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section class="admin-section reveal" id="admin">
+      <div class="section-heading">
+        <h1>Owner Dashboard</h1>
+        <p>
+          Authorized access for Heavenlee Cookies management only.
+        </p>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-login" id="adminLoginBox">
+          <div class="admin-logo-circle">
+            <img src="images/profile.png" alt="Heavenlee Cookies Logo" />
+          </div>
+
+          <h3>Owner Login</h3>
+
+          <p class="mini-text">
+            Use the provided owner credentials to manage orders, update statuses,
+            and edit product stocks.
+          </p>
+
+          <div class="demo-credentials">
+            <strong>Username:</strong> admin<br />
+            <strong>Password:</strong> heavenlee123
+          </div>
+
+          <input type="text" id="adminUsername" placeholder="Admin username" />
+          <input type="password" id="adminPassword" placeholder="Admin password" />
+          <button class="btn-primary full-btn" onclick="loginAdmin()">Open Dashboard</button>
+        </div>
+
+        <div class="admin-panel" id="adminPanel">
+          <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('orders')">Orders</button>
+            <button class="admin-tab" onclick="switchAdminTab('stocks')">Stocks</button>
+            <button class="admin-tab danger-tab" onclick="logoutAdmin()">Logout</button>
+          </div>
+
+          <div class="admin-content active" id="ordersTab">
+            <h3>Customer Orders</h3>
+            <p class="mini-text">
+            </p>
+            <div id="ordersList"></div>
+          </div>
+
+          <div class="admin-content" id="stocksTab">
+            <h3>Cookie Stocks</h3>
+            <p class="mini-text">
+              Edit available stocks. Changes appear immediately on the shop menu.
+            </p>
+            <div id="stocksList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="images/logo.png" alt="Heavenlee Cookies Logo" />
+  </footer>
+
+  <!-- CART MODAL -->
+  <div class="modal" id="cartModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Your Cart</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₱0</span>
+      </div>
+
+      <button class="btn-primary full-btn" onclick="openCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Checkout</h2>
+        <button class="close-btn" onclick="closeCheckout()">×</button>
+      </div>
+
+      <div class="checkout-form">
+        <input type="text" id="customerName" placeholder="Full Name" />
+        <input type="email" id="customerEmail" placeholder="Email Address" required />
+        <input type="tel" id="customerPhone" placeholder="Phone Number" />
+        <textarea id="customerAddress" placeholder="Complete Delivery Address"></textarea>
+
+        <select id="paymentMethod">
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+
+        <textarea id="orderNote" placeholder="Order note optional: delivery instructions, preferred time, etc."></textarea>
+
+        <button class="btn-primary full-btn" onclick="placeOrder()">Place COD Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
